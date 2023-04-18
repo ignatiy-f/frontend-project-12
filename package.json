@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/ignatiy-f/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^1.1.6"
+    "@hexlet/chat-server": "^1.1.6",
+    "lorem-ipsum": "^2.0.8",
+    "react-router-dom": "^6.10.0"
   }
 }
