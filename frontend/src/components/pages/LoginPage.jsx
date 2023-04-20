@@ -4,6 +4,9 @@ import { useFormik } from 'formik';
 import {
   Form, FloatingLabel, Button, Container, Row, Col, Card, Image,
 } from 'react-bootstrap';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import routes from '../../routes';
 
 
 const LoginPage = () => {
@@ -16,7 +19,26 @@ const LoginPage = () => {
       password: '',
     },
     onSubmit: async ({ username, password }) => {
-      console.log(username, password);
+      try {
+        setSubmitting(true);
+        const { data } = await axios.post(routes.loginPath(), { username, password });
+        localStorage.setItem('userId', data.token);
+        localStorage.setItem('username', data.username);
+        setError(false);
+        setSubmitting(false);
+        navigate('/');
+        console.log(localStorage);
+        console.log(data);
+      } catch (err) {
+        setSubmitting(false);
+        console.error(err.message);
+        if (err.response.status === 401) {
+          setError(true);
+        }
+        if (err.message === 'Network Error') {
+          toast.error('toastify.error');
+        }
+      }
     },
   });
 
