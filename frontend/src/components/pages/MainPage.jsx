@@ -12,6 +12,7 @@ import ChannelsList from '../MainPageElements/ChannelsList';
 import Messages from '../MainPageElements/Messages';
 import ChatForm from '../MainPageElements/ChatForm';
 import ModalComponent from '../ModalComponents/ModalComponent';
+import Header from '../../Header';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const MainPage = () => {
     <>
       <div className="d-flex flex-column h-100">
         <Container className="h-100 my-4 overflow-hidden rounded shadow">
+          <Header />
           <Row className="h-100 bg-white flex-md-row">
             <Col xs={4} md={2} className="border-end pt-5 px-0 bg-light">
               <ChannelsTitle />
